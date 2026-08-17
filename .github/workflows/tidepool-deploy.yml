@@ -1,0 +1,40 @@
+name: tidepool-deploy
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: projects/628405049876/locations/global/workloadIdentityPools/tidepool-github/providers/github
+      - uses: google-github-actions/setup-gcloud@v3
+      - name: Configure docker auth
+        run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+      - name: Build
+        env:
+          DOCKER_BUILDKIT: "1"
+        run: |
+          docker pull us-central1-docker.pkg.dev/bitly-tidepool-prod/tidepool-managed/tptest1:latest || true
+          docker build \
+            --cache-from=us-central1-docker.pkg.dev/bitly-tidepool-prod/tidepool-managed/tptest1:latest \
+            -t us-central1-docker.pkg.dev/bitly-tidepool-prod/tidepool-managed/tptest1:${{ github.sha }} \
+            -t us-central1-docker.pkg.dev/bitly-tidepool-prod/tidepool-managed/tptest1:latest \
+            .
+      - name: Push
+        run: docker push --all-tags us-central1-docker.pkg.dev/bitly-tidepool-prod/tidepool-managed/tptest1
+      - name: Deploy
+        run: |
+          gcloud run services update tidepool-tptest1 \
+            --image=us-central1-docker.pkg.dev/bitly-tidepool-prod/tidepool-managed/tptest1:${{ github.sha }} \
+            --region=us-central1 \
+            --project=bitly-tidepool-prod \
+            --quiet
