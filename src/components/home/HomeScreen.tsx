@@ -2,7 +2,6 @@ import type { PrototypeScenario } from "../../types";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
 import { QuickCreate } from "./QuickCreate";
-import { RecentActivity } from "./RecentActivity";
 import { EngagementSummary } from "./EngagementSummary";
 
 export function HomeScreen({ scenario }: { scenario: PrototypeScenario }) {
@@ -14,8 +13,7 @@ export function HomeScreen({ scenario }: { scenario: PrototypeScenario }) {
         <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-8">
           <QuickCreate />
 
-          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[1.4fr_1fr]">
-            <RecentActivity scenario={scenario} />
+          <div className="mt-6">
             <EngagementSummary scenario={scenario} />
           </div>
         </main>

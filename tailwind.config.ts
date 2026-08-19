@@ -12,6 +12,7 @@ export default {
           "primary-dark": "#0C3EBB", // Blue/50 — hover/active
           "primary-tint": "#EDF2FF", // Blue/10
           ink: "#273144", // Gray/90
+          body: "#3A4863", // Gray/80 — notification/body copy
           slate: "#526281", // Gray/70
           "slate-light": "#71809F", // Gray/60
           line: "#DBE0EB", // Gray/30
