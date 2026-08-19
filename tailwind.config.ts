@@ -19,6 +19,8 @@ export default {
           teal: "#00A2B4", // Teal/50
           "teal-tint": "#ECFDFF", // Teal/10
           orange: "#FF6116", // Orange/40 — reserved for the logo mark only, not UI actions
+          navy: "#001F66", // Blue/70 — the sidebar's "Create new" button
+          danger: "#DE3121", // Red/40 — notification badge
         },
       },
       fontFamily: {
