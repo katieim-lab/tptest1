@@ -39,7 +39,7 @@ export function EngagementChart({
           <path
             d={PATH_D}
             fill="none"
-            stroke="#EE6123"
+            stroke="#2A5BD7"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -61,7 +61,7 @@ export function EngagementChart({
                 cx={point.x}
                 cy={point.y}
                 r={isFinal ? 5 : 3.5}
-                fill={isFinal ? "#EE6123" : "#F7A578"}
+                fill={isFinal ? "#2A5BD7" : "#9DB8F8"}
                 aria-hidden="true"
                 style={
                   reduceMotion
@@ -81,7 +81,7 @@ export function EngagementChart({
               cy={FINAL_POINT.y}
               r={5}
               fill="none"
-              stroke="#EE6123"
+              stroke="#2A5BD7"
               strokeWidth="2"
               aria-hidden="true"
               style={{

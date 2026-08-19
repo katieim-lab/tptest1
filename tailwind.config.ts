@@ -6,21 +6,24 @@ export default {
     extend: {
       colors: {
         bitly: {
-          orange: "#EE6123",
-          "orange-dark": "#D14E15",
-          "orange-tint": "#FFF1E9",
-          ink: "#1A1B25",
-          slate: "#4B4D5C",
-          "slate-light": "#7A7C8A",
-          line: "#E4E4EA",
-          surface: "#F7F7F9",
-          teal: "#0E7C86",
-          "teal-tint": "#E6F5F6",
+          // Source of truth: Bitly Figma "Foundations" library (Colors - product)
+          // https://www.figma.com/design/rFZfN435hlBfZnIk8a9fM6/Foundations?node-id=823-62
+          primary: "#2A5BD7", // Blue/40 — real brand action color (Button/Primary+Brand)
+          "primary-dark": "#0C3EBB", // Blue/50 — hover/active
+          "primary-tint": "#EDF2FF", // Blue/10
+          ink: "#273144", // Gray/90
+          slate: "#526281", // Gray/70
+          "slate-light": "#71809F", // Gray/60
+          line: "#DBE0EB", // Gray/30
+          surface: "#F4F6FA", // Gray/10
+          teal: "#00A2B4", // Teal/50
+          "teal-tint": "#ECFDFF", // Teal/10
+          orange: "#FF6116", // Orange/40 — reserved for the logo mark only, not UI actions
         },
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "Bitly Displaay Standard",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
@@ -35,9 +38,9 @@ export default {
         pill: "999px",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(26, 27, 37, 0.06), 0 1px 1px rgba(26, 27, 37, 0.04)",
-        modal: "0 24px 48px -12px rgba(26, 27, 37, 0.35), 0 4px 16px rgba(26, 27, 37, 0.12)",
-        toolbar: "0 8px 24px rgba(26, 27, 37, 0.18)",
+        card: "0 1px 2px rgba(21, 27, 38, 0.06), 0 1px 1px rgba(21, 27, 38, 0.04)",
+        modal: "0px 8px 16px 0px rgba(21, 27, 38, 0.12)", // Figma effect style "400"
+        toolbar: "0 8px 24px rgba(21, 27, 38, 0.18)",
       },
       keyframes: {
         "chart-draw": {

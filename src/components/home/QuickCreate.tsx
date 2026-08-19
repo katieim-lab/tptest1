@@ -13,9 +13,9 @@ export function QuickCreate() {
         <button
           key={label}
           type="button"
-          className="flex items-start gap-3 rounded-card border border-bitly-line bg-white p-4 text-left shadow-card transition-shadow hover:shadow-modal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-orange"
+          className="flex items-start gap-3 rounded-card border border-bitly-line bg-white p-4 text-left shadow-card transition-shadow hover:shadow-modal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-primary"
         >
-          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-card bg-bitly-orange-tint text-bitly-orange-dark">
+          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-card bg-bitly-primary-tint text-bitly-primary">
             <Icon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span>

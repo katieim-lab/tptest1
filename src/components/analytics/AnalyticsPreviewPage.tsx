@@ -19,7 +19,7 @@ export function AnalyticsPreviewPage({
         <button
           type="button"
           onClick={onBack}
-          className="flex items-center gap-1.5 text-sm font-medium text-bitly-slate hover:text-bitly-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-orange"
+          className="flex items-center gap-1.5 text-sm font-medium text-bitly-slate hover:text-bitly-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-primary"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back to home
@@ -83,7 +83,7 @@ export function AnalyticsPreviewPage({
             <polyline
               points="10,100 70,88 130,80 190,60 250,48 310,28 390,10"
               fill="none"
-              stroke="#EE6123"
+              stroke="#2A5BD7"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"

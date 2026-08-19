@@ -53,7 +53,7 @@ export function InsightTiles({
         <path
           d={SPARK_D}
           fill="none"
-          stroke="#0E7C86"
+          stroke="#00A2B4"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

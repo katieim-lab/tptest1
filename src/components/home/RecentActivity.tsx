@@ -36,7 +36,7 @@ export function RecentActivity({ scenario }: { scenario: PrototypeScenario }) {
               >
                 {truncateAssetTitle(scenario.assetTitle)}
               </span>
-              <span className="flex-none rounded-pill bg-bitly-orange-tint px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-bitly-orange-dark">
+              <span className="flex-none rounded-pill bg-bitly-primary-tint px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-bitly-primary">
                 Trial ready
               </span>
             </span>

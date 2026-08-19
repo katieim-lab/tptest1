@@ -41,13 +41,13 @@ export function AnalyticsTrialModal({
             <button
               type="button"
               aria-label="Close"
-              className="absolute right-4 top-4 rounded-full p-1.5 text-bitly-slate-light hover:bg-bitly-surface hover:text-bitly-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-orange"
+              className="absolute right-4 top-4 rounded-full p-1.5 text-bitly-slate-light hover:bg-bitly-surface hover:text-bitly-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-primary"
             >
               <X className="h-5 w-5" aria-hidden="true" />
             </button>
           </Dialog.Close>
 
-          <p className="pr-8 text-xs font-semibold uppercase tracking-wide text-bitly-orange-dark">
+          <p className="pr-8 text-xs font-semibold uppercase tracking-wide text-bitly-primary">
             {copy.eyebrow}
           </p>
           <Dialog.Title className="mt-1 pr-8 text-xl font-semibold text-bitly-ink sm:text-2xl">
@@ -92,7 +92,7 @@ export function AnalyticsTrialModal({
             <Dialog.Close asChild>
               <button
                 type="button"
-                className="text-sm font-medium text-bitly-slate hover:text-bitly-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-orange"
+                className="text-sm font-medium text-bitly-slate hover:text-bitly-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-primary"
               >
                 {copy.secondaryAction}
               </button>
@@ -100,7 +100,7 @@ export function AnalyticsTrialModal({
             <button
               type="button"
               onClick={onPrimaryAction}
-              className="w-full rounded-pill bg-bitly-orange px-5 py-2.5 text-sm font-semibold text-white shadow-card transition-colors hover:bg-bitly-orange-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-orange-dark sm:w-auto"
+              className="w-full rounded-lg bg-bitly-primary px-5 py-2.5 text-sm font-semibold text-white shadow-card transition-colors hover:bg-bitly-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bitly-primary-dark sm:w-auto"
             >
               {copy.primaryCta}
             </button>

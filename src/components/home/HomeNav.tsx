@@ -19,7 +19,7 @@ export function HomeNav() {
               className={
                 "rounded-card px-3 py-2 text-sm font-medium transition-colors " +
                 (index === 0
-                  ? "bg-bitly-orange-tint text-bitly-orange-dark"
+                  ? "bg-bitly-primary-tint text-bitly-primary"
                   : "text-bitly-slate hover:bg-bitly-surface hover:text-bitly-ink")
               }
             >
@@ -40,7 +40,7 @@ export function HomeNav() {
         >
           <Bell className="h-5 w-5" aria-hidden="true" />
           <span
-            className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-bitly-orange"
+            className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-bitly-primary"
             aria-hidden="true"
           />
         </button>
