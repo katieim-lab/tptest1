@@ -1,4 +1,14 @@
-import { ArrowRight, Lightbulb, MoreHorizontal, Trophy, type LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Lightbulb,
+  Link2,
+  MoreHorizontal,
+  QrCode,
+  Trophy,
+  type LucideIcon,
+} from "lucide-react";
+import type { PrototypeScenario } from "../../types";
+import { engagementPhrase, truncateAssetTitle } from "../../lib/copy";
 
 type Notification = {
   icon: LucideIcon;
@@ -9,7 +19,7 @@ type Notification = {
   actionLabel: string;
 };
 
-const NEW_NOTIFICATIONS: Notification[] = [
+const STATIC_NEW_NOTIFICATIONS: Notification[] = [
   {
     icon: Trophy,
     title: "Your link just hit 100 clicks.",
@@ -39,6 +49,30 @@ const EARLIER_NOTIFICATIONS: Notification[] = [
     actionLabel: "Add to Chrome",
   },
 ];
+
+function buildLinkInteractionNotification(scenario: PrototypeScenario): Notification {
+  const noun = scenario.assetType === "qr_code" ? "QR Code" : "link";
+  const verb = scenario.assetType === "qr_code" ? "scan" : "click";
+
+  return {
+    icon: scenario.assetType === "qr_code" ? QrCode : Link2,
+    title: `Your ${truncateAssetTitle(scenario.assetTitle, 32)} ${noun} just got a ${verb}.`,
+    time: "Just now",
+    unread: true,
+    description: `You've now received ${engagementPhrase(
+      scenario.assetType,
+      scenario.engagementCount,
+    )}. See where your audience came from.`,
+    actionLabel: "See your stats",
+  };
+}
+
+export function buildNotifications(scenario: PrototypeScenario) {
+  return {
+    newNotifications: [buildLinkInteractionNotification(scenario), ...STATIC_NEW_NOTIFICATIONS],
+    earlierNotifications: EARLIER_NOTIFICATIONS,
+  };
+}
 
 function NotificationRow({ notification }: { notification: Notification }) {
   const Icon = notification.icon;
@@ -76,7 +110,9 @@ function NotificationRow({ notification }: { notification: Notification }) {
   );
 }
 
-export function NotificationFeed() {
+export function NotificationFeed({ scenario }: { scenario: PrototypeScenario }) {
+  const { newNotifications, earlierNotifications } = buildNotifications(scenario);
+
   return (
     <div className="flex w-full flex-col overflow-hidden rounded-lg border border-bitly-line bg-white shadow-modal">
       <div className="flex items-start justify-between px-6 pb-4 pt-6">
@@ -93,16 +129,16 @@ export function NotificationFeed() {
 
       <div className="max-h-[420px] overflow-y-auto">
         <p className="px-6 pb-2 pt-4 text-xs font-semibold uppercase tracking-wide text-bitly-slate">
-          New ({NEW_NOTIFICATIONS.length})
+          New ({newNotifications.length})
         </p>
-        {NEW_NOTIFICATIONS.map((notification) => (
+        {newNotifications.map((notification) => (
           <NotificationRow key={notification.title} notification={notification} />
         ))}
 
         <p className="px-6 pb-2 pt-4 text-xs font-semibold uppercase tracking-wide text-bitly-slate">
-          Earlier ({EARLIER_NOTIFICATIONS.length})
+          Earlier ({earlierNotifications.length})
         </p>
-        {EARLIER_NOTIFICATIONS.map((notification) => (
+        {earlierNotifications.map((notification) => (
           <NotificationRow key={notification.title} notification={notification} />
         ))}
       </div>

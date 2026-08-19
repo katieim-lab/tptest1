@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Bell, ChevronDown, Search } from "lucide-react";
-import { NotificationFeed } from "./NotificationFeed";
+import type { PrototypeScenario } from "../../types";
+import { NotificationFeed, buildNotifications } from "./NotificationFeed";
 
-export function TopBar() {
+export function TopBar({ scenario }: { scenario: PrototypeScenario }) {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const unreadCount = buildNotifications(scenario).newNotifications.filter(
+    (notification) => notification.unread,
+  ).length;
 
   return (
     <header className="relative flex h-16 flex-none items-center justify-between border-b border-bitly-line bg-white px-6">
@@ -15,23 +19,25 @@ export function TopBar() {
         <div className="relative">
           <button
             type="button"
-            aria-label="Notifications: 1 unread"
+            aria-label={`Notifications: ${unreadCount} unread`}
             aria-expanded={notificationsOpen}
             aria-haspopup="dialog"
             onClick={() => setNotificationsOpen((open) => !open)}
             className="relative rounded-full p-2 text-bitly-slate hover:bg-bitly-surface"
           >
             <Bell className="h-5 w-5" aria-hidden="true" />
-            <span
-              className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-bitly-danger text-[10px] font-semibold text-white"
-              aria-hidden="true"
-            >
-              1
-            </span>
+            {unreadCount > 0 && (
+              <span
+                className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-bitly-danger text-[10px] font-semibold text-white"
+                aria-hidden="true"
+              >
+                {unreadCount}
+              </span>
+            )}
           </button>
           {notificationsOpen && (
             <div className="absolute right-0 top-full z-10 mt-2 w-[448px] max-w-[90vw]">
-              <NotificationFeed />
+              <NotificationFeed scenario={scenario} />
             </div>
           )}
         </div>

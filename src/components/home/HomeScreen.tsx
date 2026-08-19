@@ -9,7 +9,7 @@ export function HomeScreen({ scenario }: { scenario: PrototypeScenario }) {
     <div className="flex min-h-full bg-bitly-surface">
       <Sidebar />
       <div className="flex min-w-0 flex-1 flex-col">
-        <TopBar />
+        <TopBar scenario={scenario} />
         <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-8">
           <QuickCreate />
 
